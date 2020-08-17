@@ -1,14 +1,15 @@
-from django import forms
 from django.contrib import admin
-
-from flat_json_widget import FlatJsonWidget
-
+from django import forms
 from .models import JsonDocument
+
+from flat_json_widget.widgets import FlatJsonWidget
 
 
 class JsonDocumentForm(forms.ModelForm):
     class Meta:
-        widgets = {'content': FlatJsonWidget}
+        widgets = {
+            'content': FlatJsonWidget
+        }
 
 
 @admin.register(JsonDocument)

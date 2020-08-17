@@ -1,6 +1,6 @@
 from django.test import TestCase
 
-from flat_json_widget import FlatJsonWidget
+from flat_json_widget.widgets import FlatJsonWidget
 
 
 class TestFlatJsonWidget(TestCase):
@@ -18,7 +18,7 @@ class TestFlatJsonWidget(TestCase):
         expected_list = [
             '/static/flat-json-widget/css/flat-json-widget.css',
             '/static/flat-json-widget/js/lib/underscore.js',
-            '/static/flat-json-widget/js/flat-json-widget.js',
+            '/static/flat-json-widget/js/flat-json-widget.js'
         ]
         for expected in expected_list:
             self.assertIn(expected, html)

@@ -75,7 +75,7 @@ django admin site:
     from django import forms
     from .models import JsonDocument
 
-    from flat_json_widget import FlatJsonWidget
+    from flat_json_widget.widgets import FlatJsonWidget
 
 
     class JsonDocumentForm(forms.ModelForm):

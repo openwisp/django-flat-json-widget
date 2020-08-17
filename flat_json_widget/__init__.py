@@ -1,5 +1,3 @@
-from .widgets import FlatJsonWidget  # noqa
-
 VERSION = (0, 1, 0, 'alpha')
 __version__ = VERSION  # alias
 
