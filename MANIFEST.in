@@ -1,0 +1,9 @@
+include LICENSE
+include README.rst
+include CHANGES.rst
+include requirements.txt
+recursive-include flat_json_widget *
+recursive-exclude * *.pyc
+recursive-exclude * *.swp
+recursive-exclude * __pycache__
+recursive-exclude * *.db

@@ -1,0 +1,33 @@
+language: python
+cache: pip
+dist: focal
+
+addons:
+  apt:
+    packages:
+      - sqlite3
+
+python:
+  - "3.7"
+  - "3.8"
+
+env:
+  - DJANGO="django~=3.1"
+
+branches:
+  only:
+    - master
+
+before_install:
+  - npm install -g jshint
+
+install:
+  - pip install -U -e .[test]
+  - pip install $DJANGO
+
+script:
+  - ./run-qa-checks
+  - coverage run --source=flat_json_widget runtests.py
+
+after_success:
+  coveralls

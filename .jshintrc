@@ -1,0 +1,14 @@
+{
+    "undef": false,
+    "unused": true,
+    "esversion": 6,
+    "curly": true,
+    "strict": "global",
+    "globals": {
+        "alert": true,
+        "django": true,
+        "gettext": true,
+        "_": true
+    },
+    "browser": true
+}

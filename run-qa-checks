@@ -1,0 +1,5 @@
+#!/bin/bash
+set -e
+jshint flat_json_widget/static/flat-json-widget/js/*.js
+stylelint flat_json_widget/static/flat-json-widget/css/*.css
+openwisp-qa-check
