@@ -19,7 +19,7 @@ branches:
     - master
 
 before_install:
-  - npm install -g jshint
+  - npm install -g jshint stylelint
 
 install:
   - pip install -U -e .[test]
