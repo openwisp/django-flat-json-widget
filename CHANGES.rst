@@ -1,7 +1,7 @@
 Changelog
 =========
 
-Version 0.1.0 [unreleased]
+Version 0.1.0 [2020-08-17]
 --------------------------
 
-WIP
+- first release
