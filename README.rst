@@ -29,14 +29,19 @@ django-flat-json-widget
    :target: https://pypi.org/project/black/
    :alt: code style: black
 
+.. image:: https://raw.githubusercontent.com/openwisp/django-flat-json-widget/master/docs/django-flat-json-widget-demo.gif
+  :target: https://github.com/openwisp/django-flat-json-widget/tree/master/docs/django-flat-json-widget-demo.gif
+  :alt: Django Flat JSON (key/value) Widget
+
 ------------
 
-If you ever needed to store a flexible dictionary of key/value in your django models,
-you may have felt the need of giving your users a widget to easily manipulate
-the data by adding or removing rows, instead of having to edit the raw JSON.
+If you ever needed to store a flexible dictionary of keys and values in your
+django models, you may have felt the need of giving your users a widget to
+easily manipulate the data by adding or removing rows,
+instead of having to edit the raw JSON.
 
-This package solves exactly that problem: it offers a widget to manipulate
-a flat JSON object made of simple keys and values.
+This package solves exactly that problem: **it offers a widget to manipulate
+a flat JSON object made of simple keys and values**.
 
 Compatibility
 -------------
