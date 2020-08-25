@@ -42,7 +42,7 @@
 
         <div class="form-row field-data flat-json-textarea" style="display:none">
             <div>
-                <label for="<%= id %>" class="required">{% trans 'Raw Editing' %}:</label>
+                <label for="<%= id %>" class="required">{% trans 'Raw JSON Editing' %}:</label>
                 <textarea class="vLargeTextField" cols="40" id="<%= id %>" name="<%= name %>" rows="10"><%= value %></textarea>
             </div>
         </div>
@@ -55,7 +55,7 @@
 
             <a href="#" class="flat-json-toggle-textarea" title="{% trans 'toggle textarea' %}" style="float:right">
                 <img src="{% static 'admin/img/icon-changelink.svg' %}" alt="">
-                {% trans 'Toggle Raw Editing' %}
+                {% trans 'Toggle Raw JSON Editing' %}
             </a>
         </div>
     </div>
