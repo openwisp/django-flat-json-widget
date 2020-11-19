@@ -35,7 +35,7 @@ setup(
     include_package_data=True,
     zip_safe=False,
     install_requires=[],
-    extras_require={'test': ['openwisp-utils[qa]~=0.6', 'django-extensions~=3.0']},
+    extras_require={'test': ['openwisp-utils[qa]~=0.7', 'django-extensions~=3.0']},
     classifiers=[
         'Development Status :: 3 - Alpha',
         'Environment :: Web Environment',
