@@ -158,33 +158,35 @@ var initJsonKeyValueWidget = function(fieldName, inlinePrefix) {
         updateTextarea($json);
     });
 };
-
-django.jQuery(function ($) {
-    // support inlines
-    // bind only once
-    if(typeof django.jsonWidgetBoundInlines === 'undefined'){
-        $('form').delegate('.inline-group .add-row a', 'click', function() {
-            var jsonOriginalTextareas = $(this).parents('.inline-group').eq(0).find('.flat-json-original-textarea');
-            // if module contains .flat-json-original-textarea
-            if(jsonOriginalTextareas.length > 0){
-                // loop over each inline
-                $(this).parents('.inline-group').find('.inline-related').each(function(e, i){
-                    var prefix = i;
-                    // loop each textarea
-                    $(this).find('.flat-json-original-textarea').each(function(){
-                        // cache field name
-                        var fieldName = $(this).attr('name');
-                        // ignore templates
-                        // if name attribute contains __prefix__
-                        if(fieldName.indexOf('prefix') > -1){
-                            // skip to next
-                            return;
-                        }
-                        initJsonKeyValueWidget(fieldName, prefix);
+window.addEventListener("load", function() {
+    django.jQuery(function ($) {
+        // support inlines
+        // bind only once
+        if(typeof django.jsonWidgetBoundInlines === 'undefined'){
+            $('form').delegate('.inline-group .add-row a', 'click', function() {
+                var jsonOriginalTextareas = $(this).parents('.inline-group').eq(0).find('.flat-json-original-textarea');
+                // if module contains .flat-json-original-textarea
+                if(jsonOriginalTextareas.length > 0){
+                    // loop over each inline
+                    $(this).parents('.inline-group').find('.inline-related').each(function(e, i){
+                        var prefix = i;
+                        // loop each textarea
+                        $(this).find('.flat-json-original-textarea').each(function(){
+                            // cache field name
+                            var fieldName = $(this).attr('name');
+                            // ignore templates
+                            // if name attribute contains __prefix__
+                            if(fieldName.indexOf('prefix') > -1){
+                                // skip to next
+                                return;
+                            }
+                            initJsonKeyValueWidget(fieldName, prefix);
+                        });
                     });
-                });
-            }
-        });
-        django.jsonWidgetBoundInlines = true;
-    }
+                }
+            });
+            django.jsonWidgetBoundInlines = true;
+        }
+    });
 });
+
