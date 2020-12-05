@@ -121,8 +121,6 @@ var initJsonKeyValueWidget = function(fieldName, inlinePrefix) {
         $json.find('.flat-json-rows').append(emptyRow);
     });
 
-
-
     // toggle textarea link
     $json.delegate('.flat-json-toggle-textarea', 'click', function(e) {
         e.preventDefault();
@@ -131,7 +129,7 @@ var initJsonKeyValueWidget = function(fieldName, inlinePrefix) {
             jsonRows = $json.find('.flat-json-rows'),
             addRow = $json.find('.flat-json-add-row');
 
-        if(rawTextarea.is(':visible')) {
+        if(rawTextarea.css('display') !== 'none') {
             var compiledUi = compileUI();
             // in case of JSON error
             if(compiledUi === false){
