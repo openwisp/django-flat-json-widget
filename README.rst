@@ -1,8 +1,8 @@
 django-flat-json-widget
 =======================
 
-.. image:: https://travis-ci.org/openwisp/django-flat-json-widget.svg
-   :target: https://travis-ci.org/openwisp/django-flat-json-widget
+.. image:: https://github.com/openwisp/django-flat-json-widget/workflows/Django%20Flat%20JSON%20Widget%20CI%20Build/badge.svg?branch=master
+   :target: https://github.com/openwisp/openwisp-controller/actions?query=workflow%3A%22Django%20Flat%20JSON%20Widget%20CI%20Build%22
    :alt: CI build status
 
 .. image:: https://coveralls.io/repos/openwisp/django-flat-json-widget/badge.svg
