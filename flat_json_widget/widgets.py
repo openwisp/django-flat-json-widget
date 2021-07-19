@@ -12,7 +12,9 @@ class FlatJsonWidget(AdminTextareaWidget):
     @property
     def media(self):
         internal_js = ['lib/underscore.js', 'flat-json-widget.js']
-        js = [f'flat-json-widget/js/{path}' for path in internal_js]
+        js = ['admin/js/jquery.init.js'] + [
+            f'flat-json-widget/js/{path}' for path in internal_js
+        ]
         css = {'all': ('flat-json-widget/css/flat-json-widget.css',)}
         return forms.Media(js=js, css=css)
 
