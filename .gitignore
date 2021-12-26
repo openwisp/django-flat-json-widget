@@ -71,3 +71,7 @@ Pipfile
 
 # celery
 tests/celerybeat*
+
+# virtual env
+/venv/
+
