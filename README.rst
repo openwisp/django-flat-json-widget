@@ -6,12 +6,12 @@ django-flat-json-widget
    :alt: CI build status
 
 .. image:: https://coveralls.io/repos/openwisp/django-flat-json-widget/badge.svg
-  :target: https://coveralls.io/r/openwisp/django-flat-json-widget
+   :target: https://coveralls.io/r/openwisp/django-flat-json-widget
    :alt: Test Coverage
 
-.. image:: https://requires.io/github/openwisp/django-flat-json-widget/requirements.svg?branch=master
-   :target: https://requires.io/github/openwisp/django-flat-json-widget/requirements/?branch=master
-   :alt: Requirements Status
+.. image:: https://img.shields.io/librariesio/release/github/openwisp/django-flat-json-widget
+   :target: https://libraries.io/github/openwisp/django-flat-json-widget#repository_dependencies
+   :alt: Dependency monitoring
 
 .. image:: https://img.shields.io/gitter/room/nwjs/nw.js.svg
    :target: https://gitter.im/openwisp/general
@@ -30,8 +30,8 @@ django-flat-json-widget
    :alt: code style: black
 
 .. image:: https://raw.githubusercontent.com/openwisp/django-flat-json-widget/master/docs/django-flat-json-widget-demo.gif
-  :target: https://github.com/openwisp/django-flat-json-widget/tree/master/docs/django-flat-json-widget-demo.gif
-  :alt: Django Flat JSON (key/value) Widget
+   :target: https://github.com/openwisp/django-flat-json-widget/tree/master/docs/django-flat-json-widget-demo.gif
+   :alt: Django Flat JSON (key/value) Widget
 
 ------------
 
