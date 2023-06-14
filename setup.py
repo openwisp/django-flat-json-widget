@@ -39,7 +39,7 @@ setup(
         'test': [
             'openwisp-utils[qa] @ '
             'https://github.com/openwisp/openwisp-utils/tarball/master',
-            'django-extensions~=3.1.0',
+            'django-extensions~=3.2.0',
         ]
     },
     classifiers=[
