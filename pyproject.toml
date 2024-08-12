@@ -1,0 +1,16 @@
+[tool.coverage.run]
+source = ["flat_json_widget"]
+omit = [
+    "flat_json_widget/__init__.py",
+    "*/tests/*",
+    "*/migrations/*",
+]
+
+[tool.isort]
+known_third_party = ["django"]
+default_section = "THIRDPARTY"
+line_length = 88
+multi_line_output = 3
+use_parentheses = true
+include_trailing_comma = true
+force_grid_wrap = 0

@@ -2,46 +2,46 @@ django-flat-json-widget
 =======================
 
 .. image:: https://github.com/openwisp/django-flat-json-widget/workflows/Django%20Flat%20JSON%20Widget%20CI%20Build/badge.svg?branch=master
-   :target: https://github.com/openwisp/openwisp-controller/actions?query=workflow%3A%22Django%20Flat%20JSON%20Widget%20CI%20Build%22
-   :alt: CI build status
+    :target: https://github.com/openwisp/openwisp-controller/actions?query=workflow%3A%22Django%20Flat%20JSON%20Widget%20CI%20Build%22
+    :alt: CI build status
 
 .. image:: https://coveralls.io/repos/openwisp/django-flat-json-widget/badge.svg
-   :target: https://coveralls.io/r/openwisp/django-flat-json-widget
-   :alt: Test Coverage
+    :target: https://coveralls.io/r/openwisp/django-flat-json-widget
+    :alt: Test Coverage
 
 .. image:: https://img.shields.io/librariesio/release/github/openwisp/django-flat-json-widget
-   :target: https://libraries.io/github/openwisp/django-flat-json-widget#repository_dependencies
-   :alt: Dependency monitoring
+    :target: https://libraries.io/github/openwisp/django-flat-json-widget#repository_dependencies
+    :alt: Dependency monitoring
 
 .. image:: https://img.shields.io/gitter/room/nwjs/nw.js.svg
-   :target: https://gitter.im/openwisp/general
-   :alt: Chat
+    :target: https://gitter.im/openwisp/general
+    :alt: Chat
 
 .. image:: https://badge.fury.io/py/django-flat-json-widget.svg
-   :target: http://badge.fury.io/py/django-flat-json-widget
-   :alt: Pypi Version
+    :target: http://badge.fury.io/py/django-flat-json-widget
+    :alt: Pypi Version
 
 .. image:: https://pepy.tech/badge/django-flat-json-widget
-   :target: https://pepy.tech/project/django-flat-json-widget
-   :alt: Downloads
+    :target: https://pepy.tech/project/django-flat-json-widget
+    :alt: Downloads
 
 .. image:: https://img.shields.io/badge/code%20style-black-000000.svg
-   :target: https://pypi.org/project/black/
-   :alt: code style: black
+    :target: https://pypi.org/project/black/
+    :alt: code style: black
 
 .. image:: https://raw.githubusercontent.com/openwisp/django-flat-json-widget/master/docs/django-flat-json-widget-demo.gif
-   :target: https://github.com/openwisp/django-flat-json-widget/tree/master/docs/django-flat-json-widget-demo.gif
-   :alt: Django Flat JSON (key/value) Widget
+    :target: https://github.com/openwisp/django-flat-json-widget/tree/master/docs/django-flat-json-widget-demo.gif
+    :alt: Django Flat JSON (key/value) Widget
 
-------------
+----
 
-If you ever needed to store a flexible dictionary of keys and values in your
-django models, you may have felt the need of giving your users a widget to
-easily manipulate the data by adding or removing rows,
-instead of having to edit the raw JSON.
+If you ever needed to store a flexible dictionary of keys and values in
+your django models, you may have felt the need of giving your users a
+widget to easily manipulate the data by adding or removing rows, instead
+of having to edit the raw JSON.
 
-This package solves exactly that problem: **it offers a widget to manipulate
-a flat JSON object made of simple keys and values**.
+This package solves exactly that problem: **it offers a widget to
+manipulate a flat JSON object made of simple keys and values**.
 
 Compatibility
 -------------
@@ -68,11 +68,11 @@ Add ``flat_json_widget`` to ``INSTALLED_APPS``:
 
     INSTALLED_APPS = [
         # other apps...
-        'flat_json_widget',
+        "flat_json_widget",
     ]
 
-Then load the widget where you need it, for example, here's how to use it in the
-django admin site:
+Then load the widget where you need it, for example, here's how to use it
+in the django admin site:
 
 .. code-block:: python
 
@@ -85,14 +85,12 @@ django admin site:
 
     class JsonDocumentForm(forms.ModelForm):
         class Meta:
-            widgets = {
-                'content': FlatJsonWidget
-            }
+            widgets = {"content": FlatJsonWidget}
 
 
     @admin.register(JsonDocument)
     class JsonDocumentAdmin(admin.ModelAdmin):
-        list_display = ['name']
+        list_display = ["name"]
         form = JsonDocumentForm
 
 Installing for development
@@ -144,17 +142,20 @@ Run quality assurance tests with:
 Contributing
 ------------
 
-Please refer to the `OpenWISP contributing guidelines <http://openwisp.io/docs/developer/contributing.html>`_.
+Please refer to the `OpenWISP contributing guidelines
+<http://openwisp.io/docs/developer/contributing.html>`_.
 
 Changelog
 ---------
 
-See `CHANGES <https://github.com/openwisp/django-flat-json-widget/blob/master/CHANGES.rst>`_.
+See `CHANGES
+<https://github.com/openwisp/django-flat-json-widget/blob/master/CHANGES.rst>`_.
 
 License
 -------
 
-See `LICENSE <https://github.com/openwisp/django-flat-json-widget/blob/master/LICENSE>`_.
+See `LICENSE
+<https://github.com/openwisp/django-flat-json-widget/blob/master/LICENSE>`_.
 
 Support
 -------

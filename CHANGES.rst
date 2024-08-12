@@ -18,8 +18,8 @@ Changes
 Version 0.1.3 [2021-07-20]
 --------------------------
 
-- [fix] Added jquery.init.js in the widget media to fix
-  `django.jQuery` JS error
+- [fix] Added jquery.init.js in the widget media to fix `django.jQuery` JS
+  error
 
 Version 0.1.2 [2020-12-05]
 --------------------------
