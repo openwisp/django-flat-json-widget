@@ -5,9 +5,7 @@ from django.utils.safestring import mark_safe
 
 
 class FlatJsonWidget(AdminTextareaWidget):
-    """
-    Flat JSON Key/Value widget
-    """
+    """Flat JSON Key/Value widget"""
 
     @property
     def media(self):
