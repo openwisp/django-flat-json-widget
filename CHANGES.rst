@@ -1,10 +1,18 @@
 Changelog
 =========
 
-Version 0.3.0 [unreleased]
+Version 0.3.0 [2024-08-14]
 --------------------------
 
-WIP
+Changes
+~~~~~~~
+
+**Dependencies:**
+
+- Added support for Python ``3.10``.
+- Dropped support for Python ``3.7``.
+- Added support for Django ``4.2``.
+- Dropped support for Django ``3.1.x`` and ``4.0.x``.
 
 Version 0.2.0 [2022-03-19]
 --------------------------
