@@ -21,8 +21,7 @@ setup(
     install_requires=[],
     extras_require={
         'test': [
-            'openwisp-utils[qa] @ '
-            'https://github.com/openwisp/openwisp-utils/tarball/master',
+            'openwisp-utils[qa]~=1.1.0',
             'django-extensions~=3.2.0',
         ]
     },
