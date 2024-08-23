@@ -1,30 +1,14 @@
 #!/usr/bin/env python
-import os
-import sys
-
 from setuptools import find_packages, setup
 
 from flat_json_widget import get_version
-
-if sys.argv[-1] == 'publish':
-    # delete any *.pyc, *.pyo and __pycache__
-    os.system('find . | grep -E "(__pycache__|\.pyc|\.pyo$)" | xargs rm -rf')
-    os.system('python setup.py sdist bdist_wheel')
-    os.system('twine upload -s dist/*')
-    os.system('rm -rf dist build')
-    args = {'version': get_version()}
-    print('You probably want to also tag the version now:')
-    print('  git tag -a %(version)s -m "version %(version)s"' % args)
-    print('  git push --tags')
-    sys.exit()
-
 
 setup(
     name='django-flat-json-widget',
     version=get_version(),
     license='BSD-3-Clause',
-    author='Federico Capoano',
-    author_email='federico.capoano@gmail.com',
+    author='OpenWISP',
+    author_email='support@openwisp.io',
     description='Django Flat JSON Key/Value Widget',
     long_description=open('README.rst').read(),
     url='https://github.com/openwisp/django-flat-json-widget',
@@ -37,13 +21,12 @@ setup(
     install_requires=[],
     extras_require={
         'test': [
-            'openwisp-utils[qa] @ '
-            'https://github.com/openwisp/openwisp-utils/tarball/master',
+            'openwisp-utils[qa]~=1.1.0',
             'django-extensions~=3.2.0',
         ]
     },
     classifiers=[
-        'Development Status :: 3 - Alpha',
+        'Development Status :: 5 - Production/Stable ',
         'Environment :: Web Environment',
         'Topic :: Internet :: WWW/HTTP',
         'Intended Audience :: Developers',
