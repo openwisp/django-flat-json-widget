@@ -109,7 +109,7 @@ Install development dependencies:
 .. code-block:: shell
 
     pip install -e .[test]
-    npm install -g jslint stylelint
+    npm install -g jslint jshint stylelint
 
 Create database:
 
