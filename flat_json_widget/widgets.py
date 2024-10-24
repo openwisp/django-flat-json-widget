@@ -9,7 +9,7 @@ class FlatJsonWidget(AdminTextareaWidget):
 
     @property
     def media(self):
-        internal_js = ['lib/underscore.js', 'flat-json-widget.js']
+        internal_js = ['lib/underscore-umd-min.js', 'flat-json-widget.js']
         js = ['admin/js/jquery.init.js'] + [
             f'flat-json-widget/js/{path}' for path in internal_js
         ]

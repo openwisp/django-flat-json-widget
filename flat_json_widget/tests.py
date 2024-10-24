@@ -17,7 +17,7 @@ class TestFlatJsonWidget(TestCase):
         html = widget.media.render()
         expected_list = [
             '/static/flat-json-widget/css/flat-json-widget.css',
-            '/static/flat-json-widget/js/lib/underscore.js',
+            '/static/flat-json-widget/js/lib/underscore-umd-min.js',
             '/static/flat-json-widget/js/flat-json-widget.js',
         ]
         for expected in expected_list:
