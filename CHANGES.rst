@@ -1,6 +1,11 @@
 Changelog
 =========
 
+Version 0.3.1 [2024-11-19]
+--------------------------
+
+- [fix:security] Upgraded underscore.js to v1.13.7 to fix CVE-2021-23358
+
 Version 0.3.0 [2024-08-23]
 --------------------------
 
