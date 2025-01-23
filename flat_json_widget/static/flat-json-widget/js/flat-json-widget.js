@@ -100,8 +100,13 @@ var initJsonKeyValueWidget = function(fieldName, inlinePrefix) {
             var inputs = $(this).find('input'),
                 key = inputs.eq(0).val(),
                 value = inputs.eq(1).val();
+
+            if (typeof value != 'undefined') {
+                try { value = JSON.parse(value); } catch (e) {}
+            }
             newValue[key] = value;
         });
+
 
         // update textarea value
         $(rawTextarea).val(JSON.stringify(newValue, null, 4));
