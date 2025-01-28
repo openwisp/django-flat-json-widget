@@ -21,7 +21,7 @@ setup(
     install_requires=[],
     extras_require={
         'test': [
-            'openwisp-utils[qa]~=1.1.0',
+            'openwisp-utils[qa]~=1.1.1',
             'django-extensions~=3.2.0',
         ]
     },
