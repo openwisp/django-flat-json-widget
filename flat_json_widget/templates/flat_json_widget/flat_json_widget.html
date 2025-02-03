@@ -36,7 +36,7 @@
                 </div>
             <% } %>
             <% for(key in data){ %>
-                <%= _.template(django.jQuery('.flat-json-row-template-inline').eq(0).html())({ 'key': key, 'value': data[key] }) %>
+                <%= _.template(django.jQuery('.flat-json-row-template-inline').eq(0).html())({ 'key': key, 'value': data[key].replace('\n' , '\\n') }) %>
             <% } %>
         </div>
 

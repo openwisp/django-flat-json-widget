@@ -99,7 +99,7 @@ var initJsonKeyValueWidget = function(fieldName, inlinePrefix) {
         rows.each(function() {
             var inputs = $(this).find('input'),
                 key = inputs.eq(0).val(),
-                value = inputs.eq(1).val();
+                value = inputs.eq(1).val() && inputs.eq(1).val().replace(/\\n/g , '\n');
             newValue[key] = value;
         });
 
