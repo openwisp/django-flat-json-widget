@@ -47,7 +47,7 @@ jobs:
         pip install -U pip wheel setuptools
         pip install -U -e .[test]
         pip install ${{ matrix.django-version }}
-        sudo npm install -g jshint stylelint
+        sudo npm install -g prettier
 
     - name: QA checks
       run: |
