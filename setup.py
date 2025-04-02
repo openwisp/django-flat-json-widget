@@ -18,14 +18,17 @@ setup(
     packages=find_packages(exclude=['tests*', 'docs*']),
     include_package_data=True,
     zip_safe=False,
-    install_requires=[],
+    python_requires='>=3.9',
+    install_requires=[
+        'django>=4.2,<=5.1',
+    ],
     extras_require={
         'test': [
             (
                 'openwisp-utils[qa]'
                 ' @ https://github.com/openwisp/openwisp-utils/tarball/1.2'
             ),
-            'django-extensions~=3.2.0',
+            'django-extensions>=3.2.0,<=3.2.3',
         ]
     },
     classifiers=[
@@ -36,6 +39,14 @@ setup(
         'License :: OSI Approved :: BSD License',
         'Operating System :: OS Independent',
         'Framework :: Django',
+        'Framework :: Django :: 4.2',
+        'Framework :: Django :: 5.0',
+        'Framework :: Django :: 5.1',
         'Programming Language :: Python :: 3',
+        'Programming Language :: Python :: 3.9',
+        'Programming Language :: Python :: 3.10',
+        'Programming Language :: Python :: 3.11',
+        'Programming Language :: Python :: 3.12',
+        'Programming Language :: Python :: 3.13 :: Only',
     ],
 )
