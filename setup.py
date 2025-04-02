@@ -20,7 +20,7 @@ setup(
     zip_safe=False,
     python_requires='>=3.9',
     install_requires=[
-        'django>=4.2,<=5.1',
+        'django>=4.2,<5.3',
     ],
     extras_require={
         'test': [
