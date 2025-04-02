@@ -115,3 +115,4 @@ if not TESTING and SHELL:
     )
 
 TEST_RUNNER = 'openwisp_utils.tests.TimeLoggingTestRunner'
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
