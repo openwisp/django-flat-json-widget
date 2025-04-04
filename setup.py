@@ -40,7 +40,6 @@ setup(
         'Operating System :: OS Independent',
         'Framework :: Django',
         'Framework :: Django :: 4.2',
-        'Framework :: Django :: 5.0',
         'Framework :: Django :: 5.1',
         'Framework :: Django :: 5.2',
         'Programming Language :: Python :: 3',
