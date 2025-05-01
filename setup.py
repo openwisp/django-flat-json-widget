@@ -28,7 +28,7 @@ setup(
                 'openwisp-utils[qa]'
                 ' @ https://github.com/openwisp/openwisp-utils/tarball/1.2'
             ),
-            'django-extensions~=3.2.0',
+            'django-extensions>=3.2,<4.2',
         ]
     },
     classifiers=[
