@@ -29,6 +29,7 @@ setup(
                 " @ https://github.com/openwisp/openwisp-utils/tarball/1.2"
             ),
             "django-extensions>=3.2,<4.2",
+            "selenium>=4.0.0,<5.0.0",
         ]
     },
     classifiers=[
