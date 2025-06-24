@@ -1,11 +1,13 @@
 from django.contrib.auth import get_user_model
 from django.contrib.staticfiles.testing import StaticLiveServerTestCase
+from django.urls import reverse
 from openwisp_utils.tests.selenium import SeleniumTestMixin
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
 
 from .models import JsonDocument
 
+ADD_PAGE_URL = reverse("admin:test_app_jsondocument_add")
+CHANGE_PAGE_URL = reverse("admin:test_app_jsondocument_change", args=[1])
 ADD_ROW_BUTTON = "flat-json-add-row"
 REMOVE_ROW_BUTTON = "flat-json-remove-row"
 SAVE_BUTTON = ".submit-row .default"
@@ -31,22 +33,16 @@ class FrontendTests(SeleniumTestMixin, StaticLiveServerTestCase):
     # Overriding open() and _wait_until_page_ready() so that #main
     # is used instead of #main-content as CSS selector.
     def open(self, url, html_container="#main", driver=None, timeout=5):
-        driver = driver or self.web_driver
-        driver.get(f"{self.live_server_url}{url}")
-        self._wait_until_page_ready(driver=driver, html_container=html_container)
+        super().open(url, html_container, driver, timeout)
 
     def _wait_until_page_ready(self, html_container="#main", timeout=5, driver=None):
-        driver = driver or self.web_driver
-        WebDriverWait(driver, timeout).until(
-            lambda d: d.execute_script("return document.readyState") == "complete"
-        )
-        self.wait_for_visibility(By.CSS_SELECTOR, html_container, timeout, driver)
+        super()._wait_until_page_ready(html_container, timeout, driver)
 
     def test_add_row(self):
         """This test checks whether the add-row button works properly."""
 
         self.login()
-        self.open("/admin/test_app/jsondocument/add")
+        self.open(reverse("admin:test_app_jsondocument_add"))
         self.find_element(By.CLASS_NAME, ADD_ROW_BUTTON).click()
         self.wait_for_visibility(By.CSS_SELECTOR, ".flat-json-rows .form-row")
         rows = self.find_elements(By.CSS_SELECTOR, ".flat-json-rows .form-row")
@@ -71,10 +67,11 @@ class FrontendTests(SeleniumTestMixin, StaticLiveServerTestCase):
             name="test_json", content=TEST_JSON_CONTENT
         )
         self.login()
-        self.open(f"/admin/test_app/jsondocument/{json_doc.pk}/change")
+        self.open(reverse("admin:test_app_jsondocument_change", args=[json_doc.pk]))
         self.wait_for_visibility(By.CLASS_NAME, "flat-json-remove-row")
         remove_buttons = self.find_elements(By.CLASS_NAME, REMOVE_ROW_BUTTON)
         second_row_remove_btn = remove_buttons[1]
+        second_row_remove_btn.location_once_scrolled_into_view
         second_row_remove_btn.click()
         rows = self.find_elements(By.CSS_SELECTOR, ".flat-json-rows .form-row")
         self.assertEqual(
@@ -98,7 +95,7 @@ class FrontendTests(SeleniumTestMixin, StaticLiveServerTestCase):
         """Tests whether the toggle button toggles between widgets and textarea"""
 
         self.login()
-        self.open("/admin/test_app/jsondocument/add/")
+        self.open(reverse("admin:test_app_jsondocument_add"))
         toggle_btn = self.find_element(By.CLASS_NAME, TOGGLE_TEXTAREA_BUTTON)
         toggle_btn.click()
         self.wait_for_invisibility(By.CLASS_NAME, "flat-json-rows")
@@ -112,7 +109,7 @@ class FrontendTests(SeleniumTestMixin, StaticLiveServerTestCase):
             name="test_json", content=TEST_JSON_CONTENT
         )
         self.login()
-        self.open(f"/admin/test_app/jsondocument/{json_doc.pk}/change")
+        self.open(reverse("admin:test_app_jsondocument_change", args=[json_doc.pk]))
         toggle_btn = self.find_element(By.CLASS_NAME, TOGGLE_TEXTAREA_BUTTON)
         toggle_btn.click()
         textarea = self.find_element(By.CSS_SELECTOR, ".flat-json-textarea textarea")
@@ -138,7 +135,7 @@ class FrontendTests(SeleniumTestMixin, StaticLiveServerTestCase):
         """Tests whether the changes made in textarea is visible in widget mode"""
 
         self.login()
-        self.open("/admin/test_app/jsondocument/add")
+        self.open(reverse("admin:test_app_jsondocument_add"))
         textarea_toggle_btn = self.find_element(By.CLASS_NAME, TOGGLE_TEXTAREA_BUTTON)
         textarea_toggle_btn.click()
         textarea = self.find_element(By.CSS_SELECTOR, ".flat-json-textarea textarea")
