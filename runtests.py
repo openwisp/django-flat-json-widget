@@ -12,4 +12,5 @@ if __name__ == "__main__":
     args = sys.argv
     args.insert(1, "test")
     args.insert(2, "flat_json_widget")
+    args.insert(3, "tests")
     execute_from_command_line(args)
