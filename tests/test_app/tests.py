@@ -19,9 +19,7 @@ TEST_JSON_CONTENT = {
 }
 
 
-class FrontendTests(SeleniumTestMixin, StaticLiveServerTestCase):
-    """Functional tests for the flat JSON widget in Django admin using Selenium"""
-
+class TestFlatJsonWidgetAdmin(SeleniumTestMixin, StaticLiveServerTestCase):
     def _create_admin(self, username, password):
         User = get_user_model()
         return User.objects.create_superuser(
@@ -30,8 +28,6 @@ class FrontendTests(SeleniumTestMixin, StaticLiveServerTestCase):
             password,
         )
 
-    # Overriding open() and _wait_until_page_ready() so that #main
-    # is used instead of #main-content as CSS selector.
     def open(self, url, html_container="#main", driver=None, timeout=5):
         super().open(url, html_container, driver, timeout)
 
@@ -39,7 +35,6 @@ class FrontendTests(SeleniumTestMixin, StaticLiveServerTestCase):
         super()._wait_until_page_ready(html_container, timeout, driver)
 
     def scroll_and_click(self, element):
-        """Scrolls element into view and clicks it"""
         self.web_driver.execute_script(
             "arguments[0].scrollIntoView({block: 'center', inline: 'nearest'});",
             element,
@@ -47,8 +42,6 @@ class FrontendTests(SeleniumTestMixin, StaticLiveServerTestCase):
         element.click()
 
     def test_add_row(self):
-        """This test checks whether the add-row button works properly."""
-
         self.login()
         self.open(reverse("admin:test_app_jsondocument_add"))
         self.wait_for_presence(By.CLASS_NAME, ADD_ROW_BUTTON)
@@ -71,8 +64,6 @@ class FrontendTests(SeleniumTestMixin, StaticLiveServerTestCase):
         )
 
     def test_remove_row(self):
-        """This test checks whether the remove-row button removes the desired row"""
-
         json_doc = JsonDocument.objects.create(
             name="test_json", content=TEST_JSON_CONTENT
         )
@@ -103,8 +94,6 @@ class FrontendTests(SeleniumTestMixin, StaticLiveServerTestCase):
         )
 
     def test_toggle_textarea(self):
-        """Tests whether the toggle button toggles between widgets and textarea"""
-
         self.login()
         self.open(reverse("admin:test_app_jsondocument_add"))
         self.wait_for_presence(By.CLASS_NAME, TOGGLE_TEXTAREA_BUTTON)
@@ -122,7 +111,7 @@ class FrontendTests(SeleniumTestMixin, StaticLiveServerTestCase):
         self.assertIsNotNone(textarea)
 
     def test_edit_json_from_textarea(self):
-        """Tests whether changes made in textarea updates the json document."""
+        """Changes made in textarea update the JSON document."""
 
         json_doc = JsonDocument.objects.create(
             name="test_json", content=TEST_JSON_CONTENT
@@ -154,7 +143,7 @@ class FrontendTests(SeleniumTestMixin, StaticLiveServerTestCase):
         )
 
     def test_textarea_edit_updates_widget(self):
-        """Tests whether the changes made in textarea is visible in widget mode"""
+        """Changes made to the textarea are visible in widget mode."""
 
         self.login()
         self.open(reverse("admin:test_app_jsondocument_add"))
