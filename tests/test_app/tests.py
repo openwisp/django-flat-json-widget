@@ -1,3 +1,5 @@
+from time import sleep
+
 from django.contrib.auth import get_user_model
 from django.contrib.staticfiles.testing import StaticLiveServerTestCase
 from django.urls import reverse
@@ -79,8 +81,7 @@ class FrontendTests(SeleniumTestMixin, StaticLiveServerTestCase):
         self.wait_for_presence(By.CLASS_NAME, "flat-json-remove-row")
         remove_buttons = self.find_elements(By.CLASS_NAME, REMOVE_ROW_BUTTON)
         second_row_remove_btn = remove_buttons[1]
-        from time import sleep
-        sleep(0.5)
+        sleep(0.25)  # workaround for random CI failures
         self.scroll_and_click(second_row_remove_btn)
         rows = self.find_elements(By.CSS_SELECTOR, ".flat-json-rows .form-row")
         self.assertEqual(
