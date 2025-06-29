@@ -79,6 +79,8 @@ class FrontendTests(SeleniumTestMixin, StaticLiveServerTestCase):
         self.wait_for_presence(By.CLASS_NAME, "flat-json-remove-row")
         remove_buttons = self.find_elements(By.CLASS_NAME, REMOVE_ROW_BUTTON)
         second_row_remove_btn = remove_buttons[1]
+        from time import sleep
+        sleep(0.5)
         self.scroll_and_click(second_row_remove_btn)
         rows = self.find_elements(By.CSS_SELECTOR, ".flat-json-rows .form-row")
         self.assertEqual(
