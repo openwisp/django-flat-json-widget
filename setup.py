@@ -32,7 +32,7 @@ setup(
         ]
     },
     classifiers=[
-        "Development Status :: 5 - Production/Stable ",
+        "Development Status :: 5 - Production/Stable",
         "Environment :: Web Environment",
         "Topic :: Internet :: WWW/HTTP",
         "Intended Audience :: Developers",
