@@ -100,6 +100,10 @@ var initJsonKeyValueWidget = function (fieldName, inlinePrefix) {
       var inputs = $(this).find("input"),
         key = inputs.eq(0).val(),
         value = inputs.eq(1).val();
+      // normalize UI representation of \\n fo \n
+      if (value) {
+        value = value.replace(/\\n/g, "\n");
+      }
       newValue[key] = value;
     });
 
