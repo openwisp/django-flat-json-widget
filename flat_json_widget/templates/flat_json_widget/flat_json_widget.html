@@ -8,7 +8,9 @@
                    type="text"
                    placeholder="{% trans 'value' %}"
                    class="flat-json-value">
-            <a href="#" class="flat-json-remove-row" title="{% trans 'remove row' %}">
+            <a href="#"
+               class="flat-json-remove-row related-widget-wrapper-link"
+               title="{% trans 'remove row' %}">
                 <img src="{% static 'admin/img/icon-deletelink.svg' %}">
             </a>
         </div>
@@ -48,12 +50,16 @@
         </div>
 
         <div class="form-row">
-            <a href="#" class="flat-json-add-row" title="{% trans 'Add another row' %}">
+            <a href="#"
+               class="flat-json-add-row related-widget-wrapper-link"
+               title="{% trans 'Add another row' %}">
                 <img src="{% static 'admin/img/icon-addlink.svg' %}" alt="">
                 {% trans "Add row" %}
             </a>
 
-            <a href="#" class="flat-json-toggle-textarea" title="{% trans 'toggle textarea' %}" style="float:right">
+            <a href="#"
+               class="flat-json-toggle-textarea related-widget-wrapper-link"
+               title="{% trans 'toggle textarea' %}" style="float:right">
                 <img src="{% static 'admin/img/icon-changelink.svg' %}" alt="">
                 {% trans 'Toggle Raw JSON Editing' %}
             </a>
