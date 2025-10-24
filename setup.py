@@ -24,10 +24,7 @@ setup(
     ],
     extras_require={
         "test": [
-            (
-                "openwisp-utils[qa,selenium]"
-                " @ https://github.com/openwisp/openwisp-utils/tarball/1.2"
-            ),
+            "openwisp-utils[qa,selenium]~=1.2.0",
             "django-extensions>=3.2,<4.2",
         ]
     },
