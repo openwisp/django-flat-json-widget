@@ -1,10 +1,25 @@
 Changelog
 =========
 
-Version 0.4.0 [unreleased]
+Version 0.4.0 [2025-10-24]
 --------------------------
 
-WIP.
+Changes
+~~~~~~~
+
+Dependencies
+++++++++++++
+
+- Added support for Django ``5.x``.
+- Added support for Python ``3.11``, ``3.12``, and ``3.13``.
+- Dropped support for Django ``3.2`` and ``4.1``.
+- Dropped support for Python ``3.8``.
+
+Bugfixes
+~~~~~~~~
+
+- Ensured input fields preserve new lines `#19
+  <https://github.com/openwisp/django-flat-json-widget/issues/19>`_.
 
 Version 0.3.1 [2024-11-19]
 --------------------------
