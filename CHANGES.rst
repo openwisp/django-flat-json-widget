@@ -1,10 +1,21 @@
 Changelog
 =========
 
-Version 0.5.0 [unreleased]
+Version 0.5.0 [2026-09-03]
 --------------------------
 
-Work in progress.
+Changes
+~~~~~~~
+
+Dependencies
+++++++++++++
+
+- Dropped support for Python ``3.9``.
+
+Bugfixes
+~~~~~~~~
+
+- Fixed ``flat_json_widget.get_version()`` to allow post release.
 
 Version 0.4.0 [2025-10-24]
 --------------------------
