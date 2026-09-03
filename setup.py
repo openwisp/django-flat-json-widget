@@ -24,11 +24,7 @@ setup(
     ],
     extras_require={
         "test": [
-            (
-                "openwisp-utils[qa,selenium] @"
-                " https://github.com/openwisp/openwisp-utils/archive/"
-                "refs/heads/1.3.tar.gz"
-            ),
+            "openwisp-utils[qa,selenium]~=1.3.0",
             "django-extensions>=3.2,<4.2",
         ]
     },
