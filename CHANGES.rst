@@ -1,10 +1,16 @@
 Changelog
 =========
 
-Version 0.5.0 [unreleased]
+Version 0.5.0 [2026-09-03]
 --------------------------
 
-Work in progress.
+Changes
+~~~~~~~
+
+Dependencies
+++++++++++++
+
+- Dropped support for Python ``3.9``.
 
 Version 0.4.0 [2025-10-24]
 --------------------------
