@@ -18,7 +18,7 @@ setup(
     packages=find_packages(exclude=["tests*", "docs*"]),
     include_package_data=True,
     zip_safe=False,
-    python_requires=">=3.10",
+    python_requires=">=3.11",
     install_requires=[
         "django>=5.2,<6.2",
     ],
@@ -44,7 +44,6 @@ setup(
         "Framework :: Django :: 6.0",
         "Framework :: Django :: 6.1",
         "Programming Language :: Python :: 3",
-        "Programming Language :: Python :: 3.10",
         "Programming Language :: Python :: 3.11",
         "Programming Language :: Python :: 3.12",
         "Programming Language :: Python :: 3.13",

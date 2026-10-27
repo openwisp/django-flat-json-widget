@@ -46,7 +46,7 @@ manipulate a flat JSON object made of simple keys and values**.
 Compatibility
 -------------
 
-Tested on python >= 3.10 and Django 5.2, 6.0 and 6.1.
+Tested on python >= 3.11 and Django 5.2, 6.0 and 6.1.
 
 Install stable version from pypi
 --------------------------------
