@@ -104,8 +104,8 @@ jobs:
           fi
           REVIEWS=$(gh api --paginate --slurp "repos/$REPOSITORY/pulls/$PR_NUMBER/reviews?per_page=100")
           if ! jq -e --arg head_sha "$HEAD_SHA" '
-            [.[][] | select(.state != "COMMENTED")]
-            | group_by(.user.login)
+            [.[][] | select(.user.id != null)]
+            | group_by(.user.id)
             | map(max_by([.submitted_at // "", .id]))
             | any(.[];
               .state == "APPROVED" and
@@ -190,7 +190,7 @@ jobs:
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
           repository: openwisp/openwisp-actions
-          ref: 5072c81386b436b073b67bc7918cec647f9e3414
+          ref: 61f8fad5c4f6b9b1cf47eb396c2e1c8392aed52f
           path: _actions/openwisp-actions
           persist-credentials: false
 
