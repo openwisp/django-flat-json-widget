@@ -129,7 +129,11 @@ Run tests with:
 
 .. code-block:: shell
 
-    ./runtests.py
+    cd ..
+    ./runtests
+
+Pass a test label for a focused run, for example ``./runtests
+flat_json_widget.tests.TestFlatJsonWidget.test_media``.
 
 Run quality assurance tests with:
 
