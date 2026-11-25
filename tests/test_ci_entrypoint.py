@@ -76,12 +76,12 @@ class CiEntrypointTests(unittest.TestCase):
             (root / "django" / "core" / "management.py").write_text(
                 'def execute_from_command_line(args): print("unexpected execution")\n'
             )
-            (root / "flat_json_widget").mkdir()
-            (root / "flat_json_widget" / "__init__.py").write_text(
+            (root / "tests" / "test_app").mkdir()
+            (root / "tests" / "test_app" / "__init__.py").write_text(
                 'def tests(): print("unexpected execution")\n'
             )
             result = subprocess.run(
-                [sys.executable, str(root / "runtests"), "flat_json_widget.tests"],
+                [sys.executable, str(root / "runtests"), "test_app.tests"],
                 cwd=root,
                 env={
                     **os.environ,
