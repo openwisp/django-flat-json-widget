@@ -2,31 +2,30 @@
 """Run the CI suite or selected Django test labels."""
 
 import os
-import re
 import sys
-from importlib import import_module
-from unittest import TestCase
+
+from openwisp_utils.test.runner import (
+    InvalidTestArgument,
+    compile_test_label_pattern,
+    parse_test_arguments,
+    validate_test_labels,
+)
 
 
 def main():
     default = len(sys.argv) == 1
-    pattern = re.compile(
-        r"(?P<module>flat_json_widget\.tests|test_app\.tests)"
-        r"(?:\.(?P<class>[A-Z]\w*)(?:\.test_\w+)?)?"
+    pattern = compile_test_label_pattern(
+        module_roots=(), exact_modules=("flat_json_widget.tests", "test_app.tests")
     )
-    labels = []
-    flags = []
-    for argument in sys.argv[1:]:
-        if argument in ("--failfast", "--noinput"):
-            flags.append(argument)
-            continue
-        match = pattern.fullmatch(argument)
-        if not match:
-            print(f"Unsupported test argument: {argument}", file=sys.stderr)
-            return 2
-        labels.append(match)
-    if not labels and not default:
-        print("Unsupported test arguments: a test label is required", file=sys.stderr)
+    try:
+        labels, flags = parse_test_arguments(
+            sys.argv[1:],
+            pattern,
+            ("--failfast", "--noinput"),
+            require_label=not default,
+        )
+    except InvalidTestArgument as error:
+        print(error, file=sys.stderr)
         return 2
     sys.path.insert(0, "tests")
     sys.argv.insert(1, "test")
@@ -34,13 +33,11 @@ def main():
     import django
 
     django.setup()
-    for match in labels:
-        if match.group("class"):
-            module = import_module(match.group("module"))
-            candidate = getattr(module, match.group("class"), None)
-            if not isinstance(candidate, type) or not issubclass(candidate, TestCase):
-                print(f"Unsupported test argument: {match.group(0)}", file=sys.stderr)
-                return 2
+    try:
+        validate_test_labels(labels)
+    except InvalidTestArgument as error:
+        print(error, file=sys.stderr)
+        return 2
     from django.core.management import execute_from_command_line
 
     selected = (

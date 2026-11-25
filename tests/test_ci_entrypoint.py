@@ -42,6 +42,7 @@ class CiEntrypointTests(unittest.TestCase):
         )
         self.assertEqual(result.returncode, 0, result.stderr)
         self.assertIn("Ran 1 test", result.stderr)
+        self.assertIn("Summary of slow tests", result.stdout)
 
     def test_default_dispatches_in_process(self):
         with tempfile.TemporaryDirectory() as directory:
@@ -63,3 +64,33 @@ class CiEntrypointTests(unittest.TestCase):
             )
         self.assertEqual(result.returncode, 0, result.stderr)
         self.assertEqual(result.stdout.strip(), "test|flat_json_widget|tests")
+
+    def test_rejects_callable_in_place_of_test_module(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            shutil.copy2(ROOT / "runtests", root / "runtests")
+            (root / "tests").mkdir()
+            (root / "django" / "core").mkdir(parents=True)
+            (root / "django" / "__init__.py").write_text("def setup(): pass\n")
+            (root / "django" / "core" / "__init__.py").touch()
+            (root / "django" / "core" / "management.py").write_text(
+                'def execute_from_command_line(args): print("unexpected execution")\n'
+            )
+            (root / "flat_json_widget").mkdir()
+            (root / "flat_json_widget" / "__init__.py").write_text(
+                'def tests(): print("unexpected execution")\n'
+            )
+            result = subprocess.run(
+                [sys.executable, str(root / "runtests"), "flat_json_widget.tests"],
+                cwd=root,
+                env={
+                    **os.environ,
+                    "PYTHONPATH": os.pathsep.join(
+                        (str(root), os.environ.get("PYTHONPATH", ""))
+                    ),
+                },
+                capture_output=True,
+                text=True,
+            )
+        self.assertEqual(result.returncode, 2, result.stderr)
+        self.assertNotIn("unexpected execution", result.stdout)
