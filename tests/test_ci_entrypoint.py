@@ -74,7 +74,7 @@ class CiEntrypointTests(unittest.TestCase):
             (root / "django" / "__init__.py").write_text("def setup(): pass\n")
             (root / "django" / "core" / "__init__.py").touch()
             (root / "django" / "core" / "management.py").write_text(
-                'def execute_from_command_line(args): print("unexpected execution")\n'
+                'def execute_from_command_line(args): print("dispatched", *args[1:])\n'
             )
             (root / "tests" / "test_app").mkdir()
             (root / "tests" / "test_app" / "__init__.py").write_text(
@@ -92,5 +92,21 @@ class CiEntrypointTests(unittest.TestCase):
                 capture_output=True,
                 text=True,
             )
+            (root / "tests" / "test_app" / "tests.py").touch()
+            valid = subprocess.run(
+                [sys.executable, str(root / "runtests"), "test_app.tests"],
+                cwd=root,
+                env={
+                    **os.environ,
+                    "PYTHONPATH": os.pathsep.join(
+                        (str(root), os.environ.get("PYTHONPATH", ""))
+                    ),
+                },
+                capture_output=True,
+                text=True,
+            )
         self.assertEqual(result.returncode, 2, result.stderr)
         self.assertNotIn("unexpected execution", result.stdout)
+        self.assertNotIn("dispatched", result.stdout)
+        self.assertEqual(valid.returncode, 0, valid.stderr)
+        self.assertIn("dispatched test test_app.tests", valid.stdout)
