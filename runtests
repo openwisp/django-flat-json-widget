@@ -1,0 +1,53 @@
+#!/usr/bin/env python
+"""Run the CI suite or selected Django test labels."""
+
+import os
+import sys
+
+from openwisp_utils.test.runner import (
+    InvalidTestArgument,
+    compile_test_label_pattern,
+    parse_test_arguments,
+    validate_test_labels,
+)
+
+
+def main():
+    default = len(sys.argv) == 1
+    pattern = compile_test_label_pattern(
+        module_roots=(), exact_modules=("flat_json_widget.tests", "test_app.tests")
+    )
+    try:
+        labels, flags = parse_test_arguments(
+            sys.argv[1:],
+            pattern,
+            ("--failfast", "--noinput"),
+            require_label=not default,
+        )
+    except InvalidTestArgument as error:
+        print(error, file=sys.stderr)
+        return 2
+    sys.path.insert(0, "tests")
+    sys.argv.insert(1, "test")
+    os.environ["DJANGO_SETTINGS_MODULE"] = "settings"
+    import django
+
+    django.setup()
+    try:
+        validate_test_labels(labels)
+    except InvalidTestArgument as error:
+        print(error, file=sys.stderr)
+        return 2
+    from django.core.management import execute_from_command_line
+
+    selected = (
+        [match.group(0) for match in labels]
+        if labels
+        else ["flat_json_widget", "tests"]
+    )
+    execute_from_command_line([sys.argv[0], "test", *selected, *flags])
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())
